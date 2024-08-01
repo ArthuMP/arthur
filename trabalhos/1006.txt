@@ -1,0 +1,14 @@
+int main() {
+  
+    double A, B, C;
+    
+    scanf("%lf", &A);
+    scanf("%lf", &B);
+    scanf("%lf", &C);
+    double peso_A = 2.0;
+    double peso_B = 3.0;
+    double peso_C = 5.0;
+    double media = (A * peso_A + B * peso_B + C * peso_C) / (peso_A + peso_B + peso_C);
+    printf("MEDIA = %.1lf\n", media);
+    return 0;
+}

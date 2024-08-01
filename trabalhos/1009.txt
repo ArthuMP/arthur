@@ -1,0 +1,15 @@
+#include <stdio.h>
+
+int main() {
+    char nome_vendedor[100]; 
+    double salario_fixo;      
+    double total_vendas;      
+    fgets(nome_vendedor, sizeof(nome_vendedor), stdin);
+    scanf("%lf", &salario_fixo);
+    scanf("%lf", &total_vendas);
+    double comissao = total_vendas * 0.15;
+    double total_a_receber = salario_fixo + comissao;
+    printf("TOTAL = R$ %.2f\n", total_a_receber);
+
+    return 0;
+}
