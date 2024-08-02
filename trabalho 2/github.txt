@@ -1,0 +1,54 @@
+#include <stdio.h>
+
+double soma(double a, double b);
+int subtracao(int a, int b);
+int multiplicacao(int a, int b);
+float divisao(int a, int b);
+long potencia(int base, int expoente);
+float raiz_quadrada(float numero);
+long fatorial(int n);
+int mdc(int a, int b);
+int mmc(int a, int b);
+void equacao_segundo_grau(float a, float b, float c);
+
+int main() {
+int escolha;
+double num1, num2;
+float num3, num4, num5;
+    
+    do {
+    printf("\n--- Menu de Operações Matemáticas ---\n");
+    printf("0.Sair\n");
+    printf("1. Soma\n");
+    printf("2. Subtração\n");
+    printf("3. Multiplicação\n");
+    printf("4. Divisão\n");
+    printf("5. Potenciação\n");
+    printf("6. Raiz Quadrada\n");
+    printf("7. Fatorial\n");
+    printf("8. MDC (Máximo Divisor Comum)\n");
+    printf("9. MMC (Mínimo Múltiplo Comum)\n");
+    printf("10. Equação do Segundo Grau\n");
+    printf("Escolha uma operação (0-10): ");
+    scanf("%d", &escolha);
+
+    switch (escolha) {
+    case 1:
+    printf("Digite o primeiro número: ");
+    scanf("%lf", &num1);
+    printf("Digite o segundo número: ");
+    scanf("%lf", &num2);
+    printf("Resultado: %lf + %lf = %.5lf\n", num1, num2, soma(num1, num2));
+    break;
+    }
+        
+    }while (escolha != 0);
+    return (0);
+}
+
+double soma(double a, double b)
+{
+    double soma = 0.0;
+    soma  = a+b;
+    return(soma);
+}
