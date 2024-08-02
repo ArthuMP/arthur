@@ -1,0 +1,14 @@
+#include <stdio.h>
+
+int main() {
+    int tempo;      
+    int velocidade; 
+    double distancia;
+    double litros;    
+    scanf("%d %d", &tempo, &velocidade);
+    distancia = tempo * velocidade;
+    litros = distancia / 12.0;
+    printf("%.3f\n", litros);
+    
+    return 0;
+}
