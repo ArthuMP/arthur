@@ -1,0 +1,192 @@
+#include <stdio.h>
+
+double soma(double a, double b);
+int subtracao(int a, int b);
+int multiplicacao(int a, int b);
+float divisao(int a, int b);
+long potencia(long base, int expoente);
+float raizQuadrada(float numero);
+long fatorial(int n);
+int mdc(int a, int b);
+int mmc(int a, int b);
+void equacaoSegundoGrau(float a, float b, float c);
+
+int main() {
+    int escolha;
+    double num1, num2;
+    int int1, int2;
+    float num3;
+
+    do {
+
+printf("\n--- Menu de Operações Matemáticas ---\n");
+printf("0. Sair\n");
+printf("1. Soma\n");
+printf("2. Subtração\n");
+printf("3. Multiplicação\n");
+printf("4. Divisão\n");
+printf("5. Potenciação\n");
+printf("6. Raiz Quadrada\n");
+printf("7. Fatorial\n");
+printf("8. MDC (Máximo Divisor Comum)\n");
+printf("9. MMC (Mínimo Múltiplo Comum)\n");
+printf("10. Equação do Segundo Grau\n");
+printf("Escolha uma operação (0-10): ");
+scanf("%d", &escolha);
+
+switch (escolha) {
+case 0:
+printf("Saindo...\n");
+break;
+case 1:
+printf("Digite o primeiro número: ");  
+scanf("%lf", &num1);
+printf("Digite o segundo número: ");
+scanf("%lf", &num2);
+printf("Resultado: %.5lf + %.5lf = %.5lf\n", num1, num2, soma(num1, num2));
+break;
+case 2:
+printf("Digite o primeiro número inteiro: ");
+scanf("%d", &int1);
+printf("Digite o segundo número inteiro: ");
+scanf("%d", &int2);
+printf("Resultado: %d - %d = %d\n", int1, int2, subtracao(int1, int2));
+break;
+case 3:               
+printf("Digite o primeiro número inteiro: ");
+scanf("%d", &int1);
+printf("Digite o segundo número inteiro: ");
+scanf("%d", &int2);
+printf("Resultado: %d * %d = %d\n", int1, int2, multiplicacao(int1, int2));
+break;
+case 4:
+printf("Digite o numerador: ");
+scanf("%d", &int1);
+printf("Digite o denominador: ");
+scanf("%d", &int2);
+printf("Resultado: %d / %d = %.5f\n", int1, int2, divisao(int1, int2));
+break;
+case 5:
+printf("Digite a base: ");
+scanf("%d", &int1);
+printf("Digite o expoente: ");
+scanf("%d", &int2);
+printf("Resultado: %ld ^ %d = %ld\n", int1, int2, potencia(int1, int2));
+break;
+case 6:
+printf("Digite um número para calcular a raiz quadrada: ");
+scanf("%f", &num3);
+printf("Resultado: Raiz quadrada de %.5f = %.5f\n", num3, raizQuadrada(num3));
+break;
+case 7:
+printf("Digite um número inteiro para calcular o fatorial: ");
+scanf("%d", &int1);
+printf("Resultado: %d! = %ld\n", int1, fatorial(int1));
+break;
+case 8:
+printf("Digite o primeiro número inteiro: ");
+scanf("%d", &int1);
+printf("Digite o segundo número inteiro: ");
+scanf("%d", &int2);
+printf("Resultado: MDC de %d e %d = %d\n", int1, int2, mdc(int1, int2));
+break;
+case 9:
+printf("Digite o primeiro número inteiro: ");
+scanf("%d", &int1);
+printf("Digite o segundo número inteiro: ");
+scanf("%d", &int2);
+printf("Resultado: MMC de %d e %d = %d\n", int1, int2, mmc(int1, int2));
+break;
+case 10:
+printf("Digite o coeficiente a: ");
+scanf("%f", &num1);
+printf("Digite o coeficiente b: ");
+scanf("%f", &num2);
+printf("Digite o coeficiente c: ");
+scanf("%f", &num3);
+equacaoSegundoGrau(num1, num2, num3);
+break;
+default:
+printf("Opção inválida! Escolha entre 0 e 10.\n");
+        }
+    } while (escolha != 0);
+
+    return 0;
+}
+double soma(double a, double b) {
+return a + b;
+}
+int subtracao(int a, int b) {
+return a - b;
+}
+int multiplicacao(int a, int b) {
+    return a * b;
+}
+float divisao(int a, int b) {
+if (b != 0) {
+return (float)a / b;
+} else {
+printf("Erro: Divisão por zero não é permitida.\n");
+        return 0;
+    }
+}
+long potencia(long base, int expoente) {
+long resultado = 1;
+for (int i = 0; i < expoente; i++) {
+resultado *= base;
+}
+return resultado;
+}
+float raizQuadrada(float numero) {
+if (numero < 0) {
+printf("Erro: Não é possível calcular a raiz quadrada de um número negativo.\n");
+return 0;
+}
+float raiz = numero;
+float epsilon = 0.00001;
+while (raiz * raiz - numero > epsilon || raiz * raiz - numero < -epsilon) {
+raiz = (raiz + numero / raiz) / 2;
+}
+return raiz;
+}
+long fatorial(int n) {
+if (n < 0) {
+printf("Erro: Fatorial não é definido para números negativos.\n");
+return 0;
+}
+long resultado = 1;
+for (int i = 1; i <= n; i++) {
+resultado *= i;
+}
+return resultado;
+}
+int mdc(int a, int b) {
+int temp;
+while (b != 0) {
+temp = b;
+b = a % b;
+a = temp;
+    }
+return a;
+}
+int mmc(int a, int b) {
+return (a * b) / mdc(a, b);
+}
+void equacaoSegundoGrau(float a, float b, float c) {
+if (a == 0) {
+printf("Erro: O coeficiente 'a' não pode ser zero.\n");
+return;
+    }
+float discriminante = b * b - 4 * a * c;
+if (discriminante > 0) {
+float raiz1 = (-b + raizQuadrada(discriminante)) / (2 * a);
+float raiz2 = (-b - raizQuadrada(discriminante)) / (2 * a);
+printf("Resultado: As raízes são %.5f e %.5f\n", raiz1, raiz2);
+} else if (discriminante == 0) {
+float raiz = -b / (2 * a);
+printf("Resultado: A raiz dupla é %.5f\n", raiz);
+} else {
+printf("Resultado: A equação não possui raízes reais.\n");
+    }
+}
+
